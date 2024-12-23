@@ -1,4 +1,13 @@
-
+"""
+plot_results.py
+-------------------------------------------------------
+OBJ: To plot the electric potential, electric field and 
+density fields of electrons and ions 
+-------------------------------------------------------
+RUN AS: python3 plot_results.py ../input.ini
+-------------------------------------------------------
+DEVELOPER: DR. RAKESH MOULICK
+"""
 import numpy as np
 from numpy import diff
 import matplotlib.pyplot as plt # type: ignore
@@ -43,7 +52,8 @@ path = '../data/files/'
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 DATA_TS = int(NUM_TS/write_interval) + 1
-L = 2*pi/NC
+Lx = 2*np.pi
+L = Lx/NC
 wp = np.sqrt(n0*e**2/(eps0*me)) # Total Plasma Frequency
 DT = DT_coeff*(1.0/wp)
 #++++++++++++++++++++ UNPACK ++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -67,16 +77,10 @@ dx = xx[1]-xx[0] # Normalized StepSize
 # create array of the w_pe*t
 ts = np.arange(0, NUM_TS+write_interval, write_interval)*DT_coeff
 
-# nParticlesE = 5120
-# nParticlesI = 5120 
-# xl = NC*dx
-# electron_spwt = (ne0*xl*L)/(nParticlesE)
-# ion_spwt = (ni0*xl*L)/(nParticlesI)
-
-# Reshape the data 
+# Reshape Data
 # -----------------------------------------------------------------------------
 EF = EF.reshape(DATA_TS,(NC+1))
-#rho = rho.reshape(DATA_TS,(NC+1))
+rho = rho.reshape(DATA_TS,(NC+1))
 phi = phi.reshape(DATA_TS,(NC+1))
 nde = nde.reshape(DATA_TS,(NC+1))
 ndi = ndi.reshape(DATA_TS,(NC+1))

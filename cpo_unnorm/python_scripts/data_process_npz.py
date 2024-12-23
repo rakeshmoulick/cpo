@@ -1,8 +1,15 @@
 #!/usr/bin/env python
 """
-This file is to be called for shortening the memory size of the data file results_1024.txt.
+data_process_npz.py
+-------------------------------------------------------
+OBJ: This file is to be called for shortening the memory 
+size of the data file results.txt.
 It can compress the file size from around 1 GB to around 150 MB.
-Run as: python3 data_process_npz.py ../data/foldername/ filename.txt True (folder location)
+Run as: python3 data_process_npz.py 
+-------------------------------------------------------
+RUN AS: python3 data_process_npz.py 
+--------------------------------------------------------
+DEVELOPER: DR. RAKESH MOULICK
 """
 import numpy as np
 from os.path import join as pjoin
